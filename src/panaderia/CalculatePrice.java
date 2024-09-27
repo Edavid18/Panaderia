@@ -12,4 +12,5 @@ public interface CalculatePrice {
     
     public double CalcPrice();
     public double Iva();
+    public double priceTotal();
 }

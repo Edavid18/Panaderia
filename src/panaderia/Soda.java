@@ -79,9 +79,16 @@ public class Soda extends Product implements CalculatePrice {
     @Override
     public double Iva() {
 
-        double getIva = CalcPrice()*0.19;
+        double iva = CalcPrice()*0.19;
         
-        return getIva;
+        return iva;
     }
+
+    @Override
+    public double priceTotal() {
+        return CalcPrice() - Iva();
+    }
+    
+    
 
 }

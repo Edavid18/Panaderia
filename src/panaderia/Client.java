@@ -8,7 +8,7 @@ package panaderia;
  *
  * @author camilo
  */
-public class Cliente {
+public class Client {
     private int id;
     private String name;
     private String type;

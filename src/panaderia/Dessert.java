@@ -14,6 +14,7 @@ public class Dessert extends Product implements  CalculatePrice {
 
     private String flavor;
     private double price;
+    private int amount;
 
     public String getFlavor() {
         return flavor;
@@ -21,6 +22,20 @@ public class Dessert extends Product implements  CalculatePrice {
 
     public void setFlavor(String flavor) {
         this.flavor = flavor;
+        
+        switch(this.flavor) {
+            case "Chocolate":
+                price = 17500;
+                break;
+
+            case "Vanilla":
+                price = 14000;
+                break;
+
+            case "Custom Flavor":
+                price = 2300;
+                break;
+        }
     }
 
     public double getPrice() {
@@ -47,23 +62,18 @@ public class Dessert extends Product implements  CalculatePrice {
         this.bacth = bacth;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public double CalcPrice() {
-        switch (getFlavor()) {
-            case "Chocolate":
-                return 17500;
-
-            case "Vanilla":
-                return 14000;
-
-            case "Custom Falvor":
-                return 2300;
-
-            default:
-                JOptionPane.showInputDialog(null, "Error");
-                return 0;
-        }
-
+        return amount * price;
+        
     }
 
     @Override
@@ -73,6 +83,11 @@ public class Dessert extends Product implements  CalculatePrice {
 
         return getIva;
 
+    }
+
+    @Override
+    public double priceTotal() {
+        return CalcPrice() - Iva();
     }
 
 }

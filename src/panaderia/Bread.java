@@ -14,6 +14,7 @@ public class Bread extends Product implements CalculatePrice{
 
     private int type;
     private double price;
+    private int amount;
 
     public int getType() {
         return type;
@@ -21,10 +22,22 @@ public class Bread extends Product implements CalculatePrice{
 
     public void setType(int type) {
         this.type = type;
+        
+        switch(this.type) {
+            case 1:
+                price = 1200;
+            
+            break;
+            case 2:
+                price = 4500;
+                
+            break;
+
+            case 3:
+                price = 8900;
+            break;
+        }
     }
-
-    
-
     
     public double getPrice() {
         return price;
@@ -50,30 +63,28 @@ public class Bread extends Product implements CalculatePrice{
         this.bacth = bacth;
     }
 
-    
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     @Override
     public double CalcPrice() {
-         switch (getType()) {
-            case 1:
-                return 1200;
-
-            case 2:
-                return 4500;
-
-            case 3:
-                return 8900;
-
-            default:
-                JOptionPane.showInputDialog(null, "Error");
-                return 0;
-        }
+        return amount * price;
     }
    @Override
     public double Iva() {
         double getIva = CalcPrice()*0.9;
         
         return getIva;
+    }
+
+    @Override
+    public double priceTotal() {
+        return CalcPrice() - Iva();
     }
 
     
