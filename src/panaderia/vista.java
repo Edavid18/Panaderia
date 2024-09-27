@@ -4,6 +4,8 @@
  */
 package panaderia;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import static panaderia.Order.Controller;
 
@@ -49,6 +51,7 @@ public class vista extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         generate = new javax.swing.JButton();
         comboBoxType = new javax.swing.JComboBox<>();
+        bag = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,24 +105,26 @@ public class vista extends javax.swing.JFrame {
 
         comboBoxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C" }));
 
+        bag.setText("Bag");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboBoxSoda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboBoxBread, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboBoxDessert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboBoxSoda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxBread, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(amountS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(amountB, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
@@ -129,41 +134,31 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(addS)
                             .addComponent(addB)
                             .addComponent(addD))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                                .addComponent(name))
-                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51))
+                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(id)
+                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(bag))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(generate)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(268, 268, 268)
+                        .addComponent(generate)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(comboBoxSoda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,8 +175,23 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(comboBoxDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(amountD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addD))))
-                .addGap(33, 33, 33)
+                            .addComponent(addD))
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bag))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)))
                 .addComponent(generate)
                 .addContainerGap(189, Short.MAX_VALUE))
         );
@@ -205,39 +215,43 @@ public class vista extends javax.swing.JFrame {
         String sizeS = comboBoxSoda.getSelectedItem().toString();
         int quantity = Integer.parseInt(amountS.getText());
         Controller.addSoda(sizeS, quantity);
+        amountS.setText("");
     }//GEN-LAST:event_addSActionPerformed
 
     private void addBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBActionPerformed
         // TODO add your handling code here:
-        String sizeB = comboBoxBread.getSelectedItem().toString();
+        int typeB = Integer.parseInt(comboBoxBread.getSelectedItem().toString());
         int quantity = Integer.parseInt(amountB.getText());
-        Controller.addSoda(sizeB, quantity);
+        Controller.addBread(typeB, quantity);
+        amountB.setText("");
     }//GEN-LAST:event_addBActionPerformed
 
     private void addDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDActionPerformed
         // TODO add your handling code here:
-        String sizeD = comboBoxDessert.getSelectedItem().toString();
+        String flavorD = comboBoxDessert.getSelectedItem().toString();
         int quantity = Integer.parseInt(amountD.getText());
-        Controller.addSoda(sizeD, quantity);
+        Controller.addDessert(flavorD, quantity);
+        amountD.setText("");
     }//GEN-LAST:event_addDActionPerformed
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         // TODO add your handling code here:
         Controller.client(name.getText(), Integer.parseInt(id.getText()), String.valueOf(comboBoxType.getSelectedItem()));
+        Controller.setPlasticBag(bag.isSelected());
         
         String sodaReceipt = "";
         for (int i = 0; i < Controller.sodaSize(); i++) {
-            sodaReceipt = sodaReceipt + "Soda " + Controller.getSoda(i).getSize() + " " + Controller.getSoda(i).getAmount() + "\n";
+            sodaReceipt = sodaReceipt + "Soda - " + Controller.getSoda(i).getSize() + " - " + Controller.getSoda(i).getAmount() + " - " + Controller.getSoda(i).CalcPrice() + "\n";
         }
         
         String breadReceipt = "";
         for (int i = 0; i < Controller.breadSize(); i++) {
-            breadReceipt = breadReceipt + "Bread " + Controller.getBread(i).getType() + " " + Controller.getBread(i).getAmount() + "\n";
+            breadReceipt = breadReceipt + "Bread - " + Controller.getBread(i).getType() + " - " + Controller.getBread(i).getAmount() + " - " + Controller.getBread(i).CalcPrice() + "\n";
         }
         
         String dessertReceipt = "";
         for (int i = 0; i < Controller.dessertSize(); i++) {
-            dessertReceipt = dessertReceipt + "Dessert " + Controller.getDessert(i).getFlavor() + " " + Controller.getDessert(i).getAmount() + "\n";
+            dessertReceipt = dessertReceipt + "Dessert - " + Controller.getDessert(i).getFlavor() + " - " + Controller.getDessert(i).getAmount() + " - " + Controller.getDessert(i).CalcPrice() + "\n";
         }
         
         String receiptContent = "----- Receipt -----\n" +
@@ -245,11 +259,19 @@ public class vista extends javax.swing.JFrame {
                 breadReceipt +
                 dessertReceipt +
                 "-------------------\n" +
-                "SubTotal: " + "\n" +
-                "Total: \n" +
+                "SubTotal: " + Controller.SubTotal() + "\n" +
+                "Iva: " + Controller.Iva() + "\n" + 
+                "Client Discount: " + Controller.calculateDiscountOnClient() + "\n" +
+                "Bag: " + Controller.calculateBag() + "\n" +
+                "Total: " + Controller.Total() + "\n" +
                 "Thank you for your purchase, " + Controller.getClient().getName() + "!";
         
         JOptionPane.showMessageDialog(null, receiptContent);
+        
+        
+        
+        
+        
     }//GEN-LAST:event_generateActionPerformed
 
     /**
@@ -294,6 +316,7 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JTextField amountB;
     private javax.swing.JTextField amountD;
     private javax.swing.JTextField amountS;
+    private javax.swing.JCheckBox bag;
     private javax.swing.JComboBox<String> comboBoxBread;
     private javax.swing.JComboBox<String> comboBoxDessert;
     private javax.swing.JComboBox<String> comboBoxSoda;

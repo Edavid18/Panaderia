@@ -21,6 +21,8 @@ public class Order {
     private ArrayList<Bread> Breads = new ArrayList();
     private ArrayList<Dessert> Desserts = new ArrayList();
     
+    private Soda Sodas2[] = new Soda[3];
+    
     public void client(String name, int id, String type){
         client.setName(name);
         client.setId(id);
@@ -79,6 +81,14 @@ public class Order {
         return Desserts.size();
     }
     
+    public void sumProducts(){
+        for (int i = 0; i < Sodas.size(); i++) {
+            if (Sodas.get(i+1) != null) {
+                
+            }
+        }
+    }
+    
     public double SubTotal(){
         double subTotal = 0;
         
@@ -131,12 +141,16 @@ public class Order {
         }
     }
     
-    public double Total(){
+    public double calculateBag(){
         if (plasticBag) {
-            return SubTotal() + Iva() + 400 - calculateDiscountOnClient();
+            return 400;
         }else{
-            return SubTotal() + Iva() - calculateDiscountOnClient(); 
+            return 0;
         }
+    }
+    
+    public double Total(){
+            return SubTotal() + Iva() + calculateBag() - calculateDiscountOnClient();
     }
 
     public boolean isPlasticBag() {
