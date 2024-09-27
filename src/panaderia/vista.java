@@ -4,9 +4,13 @@
  */
 package panaderia;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.Timer;
 import static panaderia.Order.Controller;
 
 /**
@@ -20,6 +24,14 @@ public class vista extends javax.swing.JFrame {
      */
     public vista() {
         initComponents();
+        text.setVisible(false);
+        SpinnerNumberModel model1 = new SpinnerNumberModel(0, 0, 100, 1);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(0, 0, 100, 1);
+        SpinnerNumberModel model3 = new SpinnerNumberModel(0, 0, 100, 1);
+        
+        amountS.setModel(model1);
+        amountB.setModel(model2);
+        amountD.setModel(model3);
     }
 
     /**
@@ -37,13 +49,10 @@ public class vista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         comboBoxSoda = new javax.swing.JComboBox<>();
-        amountS = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         comboBoxBread = new javax.swing.JComboBox<>();
-        amountB = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         comboBoxDessert = new javax.swing.JComboBox<>();
-        amountD = new javax.swing.JTextField();
         addB = new javax.swing.JButton();
         addD = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -52,10 +61,17 @@ public class vista extends javax.swing.JFrame {
         generate = new javax.swing.JButton();
         comboBoxType = new javax.swing.JComboBox<>();
         bag = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        amountS = new javax.swing.JSpinner();
+        amountB = new javax.swing.JSpinner();
+        amountD = new javax.swing.JSpinner();
+        text = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 49, 119, -1));
 
         addS.setText("Add");
         addS.addActionListener(new java.awt.event.ActionListener() {
@@ -63,20 +79,28 @@ public class vista extends javax.swing.JFrame {
                 addSActionPerformed(evt);
             }
         });
+        jPanel1.add(addS, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 40, -1, -1));
 
         jLabel1.setText("ID");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 52, -1, -1));
 
         jLabel2.setText("Soda");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 43, -1, -1));
 
         comboBoxSoda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal", "Pet", "Familiar" }));
+        jPanel1.add(comboBoxSoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 40, 119, -1));
 
         jLabel3.setText("Bread");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 93, -1, -1));
 
         comboBoxBread.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        jPanel1.add(comboBoxBread, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 90, 119, -1));
 
         jLabel4.setText("Dessert");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 142, -1, -1));
 
         comboBoxDessert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chocolate", "Vanilla", "Custom Flavor" }));
+        jPanel1.add(comboBoxDessert, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 139, -1, -1));
 
         addB.setText("Add");
         addB.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +108,7 @@ public class vista extends javax.swing.JFrame {
                 addBActionPerformed(evt);
             }
         });
+        jPanel1.add(addB, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 90, -1, -1));
 
         addD.setText("Add");
         addD.addActionListener(new java.awt.event.ActionListener() {
@@ -91,10 +116,14 @@ public class vista extends javax.swing.JFrame {
                 addDActionPerformed(evt);
             }
         });
+        jPanel1.add(addD, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 139, -1, -1));
 
         jLabel5.setText("Name");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 93, -1, -1));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 90, 119, -1));
 
         jLabel6.setText("Type");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 134, -1, -1));
 
         generate.setText("Generate receipt");
         generate.addActionListener(new java.awt.event.ActionListener() {
@@ -102,177 +131,167 @@ public class vista extends javax.swing.JFrame {
                 generateActionPerformed(evt);
             }
         });
+        jPanel1.add(generate, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 195, -1, -1));
 
         comboBoxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C" }));
+        jPanel1.add(comboBoxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 131, -1, -1));
 
         bag.setText("Bag");
+        jPanel1.add(bag, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 91, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxSoda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxBread, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(amountS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amountB, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(amountD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addS)
-                            .addComponent(addB)
-                            .addComponent(addD))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(id)
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(bag))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(generate)))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(comboBoxSoda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amountS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addS))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(comboBoxBread, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amountB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addB))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(comboBoxDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amountD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addD))
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bag))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(comboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)))
-                .addComponent(generate)
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
+        jLabel7.setText("Amount");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 20, 50, -1));
+        jPanel1.add(amountS, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 50, -1));
+        jPanel1.add(amountB, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 50, -1));
+        jPanel1.add(amountD, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 50, -1));
+
+        text.setText("jLabel8");
+        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSActionPerformed
-        // TODO add your handling code here:
-        String sizeS = comboBoxSoda.getSelectedItem().toString();
-        int quantity = Integer.parseInt(amountS.getText());
-        Controller.addSoda(sizeS, quantity);
-        amountS.setText("");
-    }//GEN-LAST:event_addSActionPerformed
-
-    private void addBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBActionPerformed
-        // TODO add your handling code here:
-        int typeB = Integer.parseInt(comboBoxBread.getSelectedItem().toString());
-        int quantity = Integer.parseInt(amountB.getText());
-        Controller.addBread(typeB, quantity);
-        amountB.setText("");
-    }//GEN-LAST:event_addBActionPerformed
-
-    private void addDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDActionPerformed
-        // TODO add your handling code here:
-        String flavorD = comboBoxDessert.getSelectedItem().toString();
-        int quantity = Integer.parseInt(amountD.getText());
-        Controller.addDessert(flavorD, quantity);
-        amountD.setText("");
-    }//GEN-LAST:event_addDActionPerformed
-
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         // TODO add your handling code here:
         Controller.client(name.getText(), Integer.parseInt(id.getText()), String.valueOf(comboBoxType.getSelectedItem()));
         Controller.setPlasticBag(bag.isSelected());
-        
+
         String sodaReceipt = "";
         for (int i = 0; i < Controller.sodaSize(); i++) {
-            sodaReceipt = sodaReceipt + "Soda - " + Controller.getSoda(i).getSize() + " - " + Controller.getSoda(i).getAmount() + " - " + Controller.getSoda(i).CalcPrice() + "\n";
+            sodaReceipt = sodaReceipt + "<tr><td>Soda</td><td align='right'>Size: " + Controller.getSoda(i).getSize() + "</td>"
+            + "<td align='right'>" + Controller.getSoda(i).getAmount() + "</td>"
+            + "<td align='right'>" + Controller.getSoda(i).CalcPrice()+ "</td></tr>";
         }
-        
+
         String breadReceipt = "";
         for (int i = 0; i < Controller.breadSize(); i++) {
-            breadReceipt = breadReceipt + "Bread - " + Controller.getBread(i).getType() + " - " + Controller.getBread(i).getAmount() + " - " + Controller.getBread(i).CalcPrice() + "\n";
+            breadReceipt = breadReceipt + "<tr><td>Bread</td><td align='right'>Type: " + Controller.getBread(i).getType() + "</td>"
+            + "<td align='right'>" + Controller.getBread(i).getAmount() + "</td>"
+            + "<td align='right'>" + Controller.getBread(i).CalcPrice()+ "</td></tr>";
         }
-        
+
         String dessertReceipt = "";
         for (int i = 0; i < Controller.dessertSize(); i++) {
-            dessertReceipt = dessertReceipt + "Dessert - " + Controller.getDessert(i).getFlavor() + " - " + Controller.getDessert(i).getAmount() + " - " + Controller.getDessert(i).CalcPrice() + "\n";
+            dessertReceipt = dessertReceipt + "<tr><td>Dessert</td><td align='right'>Flavor: " + Controller.getDessert(i).getFlavor() + "</td>"
+            + "<td align='right'>" + Controller.getDessert(i).getAmount() + "</td>"
+            + "<td align='right'>" + Controller.getDessert(i).CalcPrice()+ "</td></tr>";
         }
-        
-        String receiptContent = "----- Receipt -----\n" +
-                sodaReceipt +
-                breadReceipt +
-                dessertReceipt +
-                "-------------------\n" +
-                "SubTotal: " + Controller.SubTotal() + "\n" +
-                "Iva: " + Controller.Iva() + "\n" + 
-                "Client Discount: " + Controller.calculateDiscountOnClient() + "\n" +
-                "Bag: " + Controller.calculateBag() + "\n" +
-                "Total: " + Controller.Total() + "\n" +
-                "Thank you for your purchase, " + Controller.getClient().getName() + "!";
-        
-        JOptionPane.showMessageDialog(null, receiptContent);
-        
-        
-        
-        
-        
+
+        String newText = "<html><body style='font-family: monospace;'>"
+        + "<h2>----- Receipt -----</h2>"
+        + "<table width='100%'>"
+        + "<tr><td><b>Product</b></td><td align='right'><b>Description</b></td><td align='right'><b>Amount</b></td><td align='right'><b>Price</b></td></tr>"
+        + sodaReceipt
+        + breadReceipt
+        + dessertReceipt
+        + "</table>"
+        + "<hr>"
+        + "<table width='100%'>"
+        + "<tr><td>Subtotal: </td><td align='right'>" + Controller.SubTotal() + "</td></tr>"
+        + "<tr><td>Iva: </td><td align='right'>" + Controller.Iva()+ "</td></tr>"
+        + "<tr><td>Client Discount: </td><td align='right'>" + Controller.calculateDiscountOnClient()+ "</td></tr>"
+        + "<tr><td>Bag: </td><td align='right'>" + Controller.calculateBag()+ "</td></tr>"
+        + "<tr><td>Total: </td><td align='right'>" + Controller.Total() + "</td></tr>"
+        + "</table>"
+        + "<hr>"
+        + "<table width='100%'>"
+        + "<tr><td>Name: </td><td align='right'>" + Controller.getClient().getName() + "</td></tr>"
+        + "<tr><td>CC: </td><td align='right'>" + Controller.getClient().getId() + "</td></tr>"
+        + "<tr><td>Client type: </td><td align='right'>" + Controller.getClient().getType() + "</td></tr>"
+        + "</table>"
+        + "<hr>"
+        + "<p>Thank you for your purchase, " + Controller.getClient().getName() + "!";
+
+        JOptionPane.showMessageDialog(null, newText);
+
     }//GEN-LAST:event_generateActionPerformed
+
+    private void addDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDActionPerformed
+        // TODO add your handling code here:
+        String flavorD = comboBoxDessert.getSelectedItem().toString();
+        int quantity = Integer.parseInt(amountD.getValue().toString());
+        Controller.addDessert(flavorD, quantity);
+        amountD.setValue(0);
+        
+        text.setText("Dessert was added");
+        text.setVisible(true);
+                
+        // Set a timer to hide the label after 2 seconds (2000 milliseconds)
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the label after 2 seconds
+                text.setVisible(false);
+            }
+        });
+
+        // Ensure the timer only runs once
+        timer.setRepeats(false);
+        // Start the timer
+        timer.start();
+        
+    }//GEN-LAST:event_addDActionPerformed
+
+    private void addBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBActionPerformed
+        // TODO add your handling code here:
+        int typeB = Integer.parseInt(comboBoxBread.getSelectedItem().toString());
+        int quantity = Integer.parseInt(amountB.getValue().toString());
+        Controller.addBread(typeB, quantity);
+        amountB.setValue(0);
+        
+        text.setText("Bread was added");
+        text.setVisible(true);
+                
+        // Set a timer to hide the label after 2 seconds (2000 milliseconds)
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the label after 2 seconds
+                text.setVisible(false);
+            }
+        });
+
+        // Ensure the timer only runs once
+        timer.setRepeats(false);
+        // Start the timer
+        timer.start();
+    }//GEN-LAST:event_addBActionPerformed
+
+    private void addSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSActionPerformed
+        // TODO add your handling code here:
+        String sizeS = comboBoxSoda.getSelectedItem().toString();
+        int quantity = Integer.parseInt(amountS.getValue().toString());
+        Controller.addSoda(sizeS, quantity);
+        amountS.setValue(0);
+
+        text.setText("Soda was added");
+        text.setVisible(true);
+                
+        // Set a timer to hide the label after 2 seconds (2000 milliseconds)
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the label after 2 seconds
+                text.setVisible(false);
+            }
+        });
+
+        // Ensure the timer only runs once
+        timer.setRepeats(false);
+        // Start the timer
+        timer.start();
+    }//GEN-LAST:event_addSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,9 +332,9 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JButton addB;
     private javax.swing.JButton addD;
     private javax.swing.JButton addS;
-    private javax.swing.JTextField amountB;
-    private javax.swing.JTextField amountD;
-    private javax.swing.JTextField amountS;
+    private javax.swing.JSpinner amountB;
+    private javax.swing.JSpinner amountD;
+    private javax.swing.JSpinner amountS;
     private javax.swing.JCheckBox bag;
     private javax.swing.JComboBox<String> comboBoxBread;
     private javax.swing.JComboBox<String> comboBoxDessert;
@@ -329,7 +348,9 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name;
+    private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }
